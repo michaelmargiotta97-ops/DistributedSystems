@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package airquality;
+
+// The service definition.
+service AirQualityService {
+  // Server-side streaming: Client asks for updates, Server streams data.
+  rpc StreamAirUpdates(AirRequest) returns (stream AirData) {}
+}
+
+// Message sent by the client to start the stream
+message AirRequest {
+  string city_zone = 1;
+}
+
+// The data exchange format for air quality
+message AirData {
+  float co2_level = 1;      // Measured in ppm
+  int32 particulate_matter = 2; // PM2.5 levels
+  string status = 3;        // e.g., "Healthy" or "Alert"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "x25134515-suss-smart-city",
+  "version": "1.0.0",
+  "description": "Distributed Systems CA - SDG 11: Sustainable Cities and Communities",
+  "main": "server/traffic_server.js",
+  "scripts": {
+    "start-air": "node server/air_server.js",
+    "start-traffic": "node server/traffic_server.js",
+    "start-waste": "node server/waste_server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Margiotta (x25134515)",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.9.0",
+    "@grpc/proto-loader": "^0.7.10",
+    "mdns": "^2.7.0",
+    "google-protobuf": "^3.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

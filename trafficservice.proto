@@ -1,0 +1,32 @@
+Protocol Buffers
+syntax = "proto3";
+
+option java_package = "ie.ncirl.suss.traffic";
+option java_multiple_files = true;
+
+service TrafficService {
+  // Simple RPC: Manually override a signal for emergency vehicles
+  rpc EmergencyOverride (OverrideRequest) returns (OverrideResponse) {}
+
+  // Client-side Streaming: Client sends multiple speed readings, server returns average
+  rpc RecordTrafficFlow (stream SpeedReading) returns (FlowSummary) {}
+}
+
+message OverrideRequest {
+  string junction_id = 1;
+  bool active = 2;
+}
+
+message OverrideResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message SpeedReading {
+  double speed_kmh = 1;
+}
+
+message FlowSummary {
+  double average_speed = 1;
+  string congestion_level = 2;
+}

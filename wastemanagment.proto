@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_package = "ie.ncirl.suss.waste";
+option java_multiple_files = true;
+
+service WasteService {
+  // Bidirectional Streaming: Real-time coordination between truck and server
+  rpc OptimizeRoute (stream BinStatus) returns (stream RouteUpdate) {}
+}
+
+message BinStatus {
+  string bin_id = 1;
+  int32 fill_percentage = 2;
+  string location_coordinates = 3;
+}
+
+message RouteUpdate {
+  string next_stop_id = 1;
+  string navigation_instruction = 2;
+}

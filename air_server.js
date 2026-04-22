@@ -59,7 +59,6 @@ function monitorAirLevels(call) {
 
 /**
  * SERVER STARTUP
- * Note: JmDNS registration would occur after server.start()
  */
 function main() {
     const server = new grpc.Server();
